@@ -3,7 +3,7 @@ import subprocess
 
 # Configuración
 INPUT_DIR = r"C:\Users\Alex\Desktop\Musica"       # Carpeta de entrada default
-OUTPUT_DIR = r"C:\Users\Alex\Desktop\CMusica"    # Carpeta de salida default
+OUTPUT_DIR = r"C:\Users\Alex\Desktop\MusicaMP3"    # Carpeta de salida default
 FFMPEG_PATH = r"C:\Program Files\ffmpeg\bin\ffmpeg.exe"
 
 
@@ -36,9 +36,10 @@ def recorrer_directorio(input_dir, output_dir):
                 rel_path = os.path.relpath(root, input_dir)
                 file_name = os.path.splitext(file)[0] + ".mp3"
                 output_path = os.path.join(output_dir, rel_path, file_name)
-                convertir_mp4_a_mp3(input_path, output_path)
+                if not os.path.exists(output_path):
+                    convertir_mp4_a_mp3(input_path, output_path)
                 contador = contador+1
-                print(f"{contador} archivos convertidos")
+                print(f"{contador} archivos convertidos")                    
             else:
                 print(f"Salteado n° {salt}: {file}")
                 salt+=1
@@ -62,18 +63,18 @@ if __name__ == "__main__":
     print("*mp3------------------------------------------------------------*")
     print("*****************************************************************")
     print("")
-    print("Arrastre la carpeta a convertir o presione enter para designar:.")
-    print(INPUT_DIR)
-    inn = input()
-    if inn=="":
-        inn=INPUT_DIR
-    print("")
-    print("Escriba la ruta destino o presione enter para designar:")
-    print(OUTPUT_DIR)
-    outt = input()
-    if outt=="":
-        outt=OUTPUT_DIR
-    print("")
-    recorrer_directorio(inn, outt)
+    #print("Arrastre la carpeta a convertir o presione enter para designar:.")
+    #print(INPUT_DIR)
+    #inn = input()
+    #if inn=="":
+    #    inn=INPUT_DIR
+    #print("")
+    #print("Escriba la ruta destino o presione enter para designar:")
+    #print(OUTPUT_DIR)
+    #outt = input()
+    #if outt=="":
+    #    outt=OUTPUT_DIR
+    #print("")
+    recorrer_directorio(INPUT_DIR,OUTPUT_DIR)#(inn, outt)
     print("Proceso terminado. Presione ENTER para salir.")
     input()
