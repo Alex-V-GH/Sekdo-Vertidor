@@ -1,0 +1,5 @@
+{
+  "input": "D:\\Musica",
+  "output": "D:\\MusicaMP3",
+  "ffmpeg": "C:\\Program Files\\ffmpeg\\bin\\ffmpeg.exe"
+}
