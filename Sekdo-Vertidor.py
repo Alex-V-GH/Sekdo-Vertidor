@@ -40,8 +40,8 @@ def recorrer_directorio(input_dir, output_dir,ffmpeg_path):
             if base not in input_files.get(rel, set()):
                 os.remove(os.path.join(root, f))
                 contador_l += 1
-                print(f"{contador_l} archivos limpiados")
-                print(f"**DEBUG**   ", "\n", output_dir, "\n",root, "\n",f)
+    print(f"{contador_l} archivos limpiados")
+                #print(f"**DEBUG**   ", "\n", output_dir, "\n",root, "\n",f)
 
     #trabajo real
     for root, _, files in os.walk(input_dir):
@@ -56,7 +56,7 @@ def recorrer_directorio(input_dir, output_dir,ffmpeg_path):
                 contador = contador+1
                 print(f"{contador} archivos convertidos")                    
             else:
-                print(f"Salteado n° {salt}: {file}")
+                #print(f"Salteado n° {salt}: {file}")
                 salt+=1
                 salteados.append(file)
     salt-=1 #deshacer la ultima suma para que el total sea coherente
@@ -67,7 +67,6 @@ def recorrer_directorio(input_dir, output_dir,ffmpeg_path):
     print("")
     for salteado in salteados:
         print(salteado)
-    print("")
 
 if __name__ == "__main__":
     #INFO
@@ -99,11 +98,6 @@ if __name__ == "__main__":
             json.dump(parameters, f, indent=2)
     print("")
     recorrer_directorio(input_dir,output_dir,ffmpeg_path)
-    print("Proceso terminado. Presione ENTER para salir.")
-    input()
-
-    #    outt=OUTPUT_DIR
-    #print("")
-    recorrer_directorio(INPUT_DIR,OUTPUT_DIR)#(inn, outt)
+    print("")
     print("Proceso terminado. Presione ENTER para salir.")
     input()
